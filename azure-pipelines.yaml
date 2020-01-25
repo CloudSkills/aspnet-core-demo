@@ -5,6 +5,7 @@ trigger:
     - master
 variables:
   buildConfiguration: 'Release'
+  sqlServerConnection: 'RazorPagesMovieContext'
   
 stages:
 
@@ -26,12 +27,6 @@ stages:
       inputs:
         command: build
         projects: '**/*.csproj'
-        arguments: '--configuration $(buildConfiguration)'
-    - task: DotNetCoreCLI@2
-      displayName: 'dotnet test'
-      inputs:
-        command: test
-        projects: '**/*Test/*.csproj'
         arguments: '--configuration $(buildConfiguration)'
     - task: DotNetCoreCLI@2
       displayName: 'dotnet publish'
@@ -62,7 +57,7 @@ stages:
     - task: AzureRmWebAppDeployment@4
       inputs:
         ConnectionType: 'AzureRM'
-        azureSubscription: 'webapps-rg'
-        WebAppName: 'csweb01252020'
+        azureSubscription: 'AzDO'
+        WebAppName: 'csweb01262020'
         package: '$(Pipeline.Workspace)/**/*.zip'
-        WebAppKind: webApp
+        WebAppKind: WebApp
