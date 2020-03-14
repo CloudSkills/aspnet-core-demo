@@ -262,10 +262,12 @@
             "tenantId": "[subscription().tenantId]",
             "permissions": {
               "keys": [
-                "list"
+                "list",
+                "get"
               ],
               "secrets": [
-                "list"
+                "list",
+                "get"
               ]     
             }
           }
