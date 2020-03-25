@@ -52,11 +52,11 @@ stages:
     - download: current
       artifact: app
 
-  # Release the app
-  - task: AzureRmWebAppDeployment@4
-    inputs:
-      ConnectionType: 'AzureRM'
-      azureSubscription: 'AzureSC'
-      WebAppName: 'cs-web-03142020'
-      package: '$(Pipeline.Workspace)/**/*.zip'
-      WebAppKind: WebApp
+    # Release the app
+    - task: AzureRmWebAppDeployment@4
+      inputs:
+        ConnectionType: 'AzureRM'
+        azureSubscription: 'AzDO'
+        WebAppName: 'csweb03252020'
+        package: '$(Pipeline.Workspace)/**/*.zip'
+        WebAppKind: WebApp
